@@ -77,32 +77,60 @@ class BaseWDL(nn.Module):
         return reg_loss
 
 
-class Normalizer(nn.Module):
-    def __init__(self, norm_type: str, device: str):
+class BatchedNormalizer(nn.Module):
+    """
+    Unified batched normalizer that processes multiple features at once.
+    All normalization methods are handled in a single forward pass for efficiency.
+    """
+    def __init__(self, norm_type: str, num_features: int, device: str):
         """
-        norm_type: one of 'zscore', 'log1p'
-        For 'zscore', uses BatchNorm1d without affine to approximate normalization.
-        For 'log1p', applies torch.log1p directly.
+        Args:
+            norm_type: one of 'zscore', 'log1p', 'reciprocal', 'null'
+            num_features: number of features to normalize with this method
+            device: device to place the normalizer on
         """
         super().__init__()
         self.norm_type = norm_type
+        self.num_features = num_features
+        
+        # Only zscore needs learnable parameters
         if norm_type == 'zscore':
-            self.norm = nn.BatchNorm1d(1, affine=True, track_running_stats=True)
-        elif norm_type == 'log1p':
-            self.norm = None
+            # Use BatchNorm1d with num_features channels for batched processing
+            # Each feature gets its own running_mean and running_var
+            self.norm = nn.BatchNorm1d(num_features, affine=True, track_running_stats=True)
         else:
             self.norm = None
+        
         self.to(device)
 
     def forward(self, x: torch.Tensor):
-        x = x.unsqueeze(1)  # shape (B, 1)
+        """
+        Apply normalization to batched features.
+        
+        Args:
+            x: shape (batch_size, num_features) - stacked features of the same norm type
+            
+        Returns:
+            normalized tensor of shape (batch_size, num_features)
+            
+        Note:
+            - zscore: uses BatchNorm1d for learnable normalization
+            - log1p: applies log(1+x) element-wise (batched operation)
+            - reciprocal: applies 1/(1+x) element-wise (batched operation)
+            - null: pass through without modification
+        """
         if self.norm_type == 'zscore':
-            x = self.norm(x)
+            # BatchNorm1d: (batch_size, num_features) -> (batch_size, num_features)
+            return self.norm(x)
         elif self.norm_type == 'log1p':
-            x = torch.log1p(x)
+            # Element-wise log1p, but operates on entire batch at once
+            return torch.log1p(x)
         elif self.norm_type == 'reciprocal':
-            x = torch.reciprocal(x + 1)
-        return x.squeeze(1)
+            # Element-wise reciprocal, but operates on entire batch at once
+            return torch.reciprocal(x + 1.0)
+        else:  # 'null' or None
+            # Pass through without modification
+            return x
 
 
 class MOE(BaseRank):
@@ -157,12 +185,28 @@ class MOE(BaseRank):
             for feat in feat_config['sparse']
         })
 
-        # 2. 每个dense feat 定义一个 normalization module
-        self.norm_layers = nn.ModuleDict()
-        for feat in feat_config['dense']:
+        # 2. Group dense features by normalization type for batched processing
+        # Build mapping: norm_type -> list of (feature_name, feature_index)
+        self.norm_type_to_features = {}
+        self.dense_feat_to_index = {}  # feature_name -> index in dense_feats list
+        
+        for idx, feat in enumerate(feat_config['dense']):
             name = feat['name']
-            norm_type = feat['norm']
-            self.norm_layers[name] = Normalizer(norm_type,device=self.dnn_device)
+            norm_type = feat['norm'] if feat['norm'] is not None else 'null'
+            self.dense_feat_to_index[name] = idx
+            
+            if norm_type not in self.norm_type_to_features:
+                self.norm_type_to_features[norm_type] = []
+            self.norm_type_to_features[norm_type].append(name)
+        
+        # Create batched normalizers for each norm type
+        self.batched_normalizers = nn.ModuleDict()
+        for norm_type, feat_names in self.norm_type_to_features.items():
+            self.batched_normalizers[norm_type] = BatchedNormalizer(
+                norm_type=norm_type,
+                num_features=len(feat_names),
+                device=self.dnn_device
+            )
 
         input_dim = len(self.sparse_feats) * embedding_dim + len(feat_config['dense'])
 
@@ -197,17 +241,40 @@ class MOE(BaseRank):
         inputs = data[0]
         # sparse
         embs = []
-        # dense
-        dense_vals = []
-        for name in inputs.keys():
-            tensor = inputs[name]
-            if name in self.sparse_feats:
+        for name in self.sparse_feats:
+            if name in inputs:
+                tensor = inputs[name]
                 embs.append(self.embeddings[name](tensor.to(self.embedding_device)))
-            elif name in self.dense_feats:
-                normed = self.norm_layers[name](tensor.to(self.dnn_device))
-                dense_vals.append(normed.unsqueeze(-1))
-        self.deep_emb_features = torch.cat(embs, dim=-1).to(self.dnn_device)
-        self.deep_dense_features = torch.cat(dense_vals, dim=-1).to(self.dnn_device)
+        
+        # dense - batched normalization
+        # Prepare output tensor to hold all normalized dense features in correct order
+        batch_size = next(iter(inputs.values())).shape[0]
+        num_dense = len(self.dense_feats)
+        dense_features_normalized = torch.zeros(batch_size, num_dense, device=self.dnn_device)
+        
+        # Process features grouped by normalization type
+        for norm_type, feat_names in self.norm_type_to_features.items():
+            # Gather all features for this norm type
+            feat_tensors = []
+            feat_indices = []
+            for feat_name in feat_names:
+                if feat_name in inputs:
+                    feat_tensors.append(inputs[feat_name].to(self.dnn_device))
+                    feat_indices.append(self.dense_feat_to_index[feat_name])
+            
+            if len(feat_tensors) > 0:
+                # Stack features: (batch_size, num_features_of_this_type)
+                stacked_features = torch.stack(feat_tensors, dim=1)
+                
+                # Apply batched normalization
+                normalized = self.batched_normalizers[norm_type](stacked_features)
+                
+                # Place normalized features back to their correct positions
+                for i, feat_idx in enumerate(feat_indices):
+                    dense_features_normalized[:, feat_idx] = normalized[:, i]
+        
+        self.deep_emb_features = torch.cat(embs, dim=-1).to(self.dnn_device) if embs else torch.empty(batch_size, 0, device=self.dnn_device)
+        self.deep_dense_features = dense_features_normalized
 
         input_features = torch.cat([self.deep_emb_features, self.deep_dense_features], dim=-1)
 
