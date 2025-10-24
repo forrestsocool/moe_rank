@@ -1,0 +1,1067 @@
+sparse:
+  - name: customer_id
+    dtype: int64
+    vocab_size: 10000000
+  - name: operate_area_id
+    dtype: int64
+    vocab_size: 100
+  - name: vendor_id
+    dtype: int64
+    vocab_size: 10000
+  - name: brand_id
+    dtype: int64
+    vocab_size: 10000
+  - name: lv1_category_id
+    dtype: int64
+    vocab_size: 1000
+  - name: lv2_category_id
+    dtype: int64
+    vocab_size: 5000
+  - name: goodssku
+    dtype: int64
+    vocab_size: 1000000
+  - name: hr
+    dtype: int64
+    vocab_size: 24
+dense:
+  - name: pos
+    dtype: float32
+    norm: reciprocal
+    default: 0
+  - name: view_cnt_30
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: view_first_cate_cnt_30
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: view_second_cate_cnt_30
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_product_cnt_30
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_product_first_cate_cnt_30
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_product_second_cate_cnt_30
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_cnt_30
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: sub_order_cnt_30
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_first_cate_cnt_30
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_second_cate_cnt_30
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_total_sum_30
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_total_avg_30
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: view_cnt_7
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: view_first_cate_cnt_7
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: view_second_cate_cnt_7
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_product_cnt_7
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_product_first_cate_cnt_7
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_product_second_cate_cnt_7
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_cnt_7
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: sub_order_cnt_7
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_first_cate_cnt_7
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_second_cate_cnt_7
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_total_sum_7
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_total_avg_7
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: view_cnt_15
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: view_first_cate_cnt_15
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: view_second_cate_cnt_15
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_product_cnt_15
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_product_first_cate_cnt_15
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_product_second_cate_cnt_15
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_cnt_15
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: sub_order_cnt_15
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_first_cate_cnt_15
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_second_cate_cnt_15
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_total_sum_15
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_total_avg_15
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: view_cnt
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: view_first_cate_cnt
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: view_second_cate_cnt
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_product_cnt
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_product_first_cate_cnt
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_product_second_cate_cnt
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_cnt
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: sub_order_cnt
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_first_cate_cnt
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_second_cate_cnt
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_total_sum
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: order_total_avg
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: i_sku_view_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_sku_add_product_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_sku_order_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_sku_view_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_sku_add_product_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_sku_order_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_sku_view_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_sku_add_product_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_sku_order_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_sku_view_cnt_1
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_sku_add_product_cnt_1
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_sku_order_cnt_1
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_firstcate_view_cnt_1
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_firstcate_view_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_firstcate_view_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_firstcate_view_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_firstcate_add_product_cnt_1
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_firstcate_add_product_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_firstcate_add_product_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_firstcate_add_product_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_firstcate_order_cnt_1
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_firstcate_order_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_firstcate_order_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_firstcate_order_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_secondcate_view_cnt_1
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_secondcate_view_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_secondcate_view_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_secondcate_view_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_secondcate_add_product_cnt_1
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_secondcate_add_product_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_secondcate_add_product_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_secondcate_add_product_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_secondcate_order_cnt_1
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_secondcate_order_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_secondcate_order_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: sep_i_secondcate_order_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: r_i_firstcate_view_cnt_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_firstcate_view_cnt_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_firstcate_view_cnt_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_firstcate_view_cnt_1
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_secondcate_view_cnt_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_secondcate_view_cnt_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_secondcate_view_cnt_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_secondcate_view_cnt_1
+    dtype: float32
+    norm: null
+    default: 0
+  - name: p_i_secondcate_view_cnt_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: p_i_secondcate_view_cnt_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: p_i_secondcate_view_cnt_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: p_i_secondcate_view_cnt_1
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_firstcate_add_product_cnt_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_firstcate_add_product_cnt_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_firstcate_add_product_cnt_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_firstcate_add_product_cnt_1
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_secondcate_add_product_cnt_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_secondcate_add_product_cnt_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_secondcate_add_product_cnt_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_secondcate_add_product_cnt_1
+    dtype: float32
+    norm: null
+    default: 0
+  - name: p_i_secondcate_add_product_cnt_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: p_i_secondcate_add_product_cnt_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: p_i_secondcate_add_product_cnt_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: p_i_secondcate_add_product_cnt_1
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_firstcate_order_cnt_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_firstcate_order_cnt_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_firstcate_order_cnt_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_firstcate_order_cnt_1
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_secondcate_order_cnt_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_secondcate_order_cnt_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_secondcate_order_cnt_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: r_i_secondcate_order_cnt_1
+    dtype: float32
+    norm: null
+    default: 0
+  - name: p_i_secondcate_order_cnt_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: p_i_secondcate_order_cnt_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: p_i_secondcate_order_cnt_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: p_i_secondcate_order_cnt_1
+    dtype: float32
+    norm: null
+    default: 0
+  - name: i_rank_view_secondcate_30
+    dtype: float32
+    norm: reciprocal
+    default: 1000
+  - name: i_rank_view_secondcate_15
+    dtype: float32
+    norm: reciprocal
+    default: 1000
+  - name: i_rank_view_secondcate_7
+    dtype: float32
+    norm: reciprocal
+    default: 1000
+  - name: i_rank_view_secondcate_1
+    dtype: float32
+    norm: reciprocal
+    default: 1000
+  - name: i_rank_add_product_secondcate_30
+    dtype: float32
+    norm: reciprocal
+    default: 1000
+  - name: i_rank_add_product_secondcate_15
+    dtype: float32
+    norm: reciprocal
+    default: 1000
+  - name: i_rank_add_product_secondcate_7
+    dtype: float32
+    norm: reciprocal
+    default: 1000
+  - name: i_rank_add_product_secondcate_1
+    dtype: float32
+    norm: reciprocal
+    default: 1000
+  - name: i_rank_order_secondcate_30
+    dtype: float32
+    norm: reciprocal
+    default: 1000
+  - name: i_rank_order_secondcate_15
+    dtype: float32
+    norm: reciprocal
+    default: 1000
+  - name: i_rank_order_secondcate_7
+    dtype: float32
+    norm: reciprocal
+    default: 1000
+  - name: i_rank_order_secondcate_1
+    dtype: float32
+    norm: reciprocal
+    default: 1000
+  - name: ctr_user_firstcate_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: ctr_user_firstcate_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: ctr_user_firstcate_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: ctr_user_firstcate_1
+    dtype: float32
+    norm: null
+    default: 0
+  - name: ctr_user_secondcate_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: ctr_user_secondcate_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: ctr_user_secondcate_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: ctr_user_secondcate_1
+    dtype: float32
+    norm: null
+    default: 0
+  - name: cvr_user_firstcate_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: cvr_user_firstcate_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: cvr_user_firstcate_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: cvr_user_firstcate_1
+    dtype: float32
+    norm: null
+    default: 0
+  - name: cvr_user_secondcate_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: cvr_user_secondcate_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: cvr_user_secondcate_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: cvr_user_secondcate_1
+    dtype: float32
+    norm: null
+    default: 0
+  - name: second_category_view_tag_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: second_category_view_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: second_category_view_tag_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: second_category_view_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: second_category_view_tag_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: second_category_view_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: second_category_add_product_tag_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: second_category_add_product_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: second_category_add_product_tag_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: second_category_add_product_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: second_category_add_product_tag_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: second_category_add_product_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: second_category_order_tag_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: second_category_order_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: second_category_order_tag_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: second_category_order_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: second_category_order_tag_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: second_category_order_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: first_category_view_tag_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: first_category_view_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: first_category_view_tag_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: first_category_view_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: first_category_view_tag_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: first_category_view_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: first_category_add_product_tag_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: first_category_add_product_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: first_category_add_product_tag_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: first_category_add_product_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: first_category_add_product_tag_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: first_category_add_product_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: first_category_order_tag_7
+    dtype: float32
+    norm: null
+    default: 0
+  - name: first_category_order_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: first_category_order_tag_15
+    dtype: float32
+    norm: null
+    default: 0
+  - name: first_category_order_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: first_category_order_tag_30
+    dtype: float32
+    norm: null
+    default: 0
+  - name: first_category_order_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_repurchase
+    dtype: float32
+    norm: null
+    default: 0
+  - name: in_repurchase_cycle
+    dtype: float32
+    norm: null
+    default: 0
+  - name: recent_purdate_diff
+    dtype: float32
+    norm: reciprocal
+    default: 365
+  - name: recent_diff_rate
+    dtype: float32
+    norm: reciprocal
+    default: 60
+  - name: i_view_secondcate_30_rank_top
+    dtype: float32
+    norm: null
+    default: 0
+  - name: i_view_secondcate_15_rank_top
+    dtype: float32
+    norm: null
+    default: 0
+  - name: i_add_product_secondcate_30_rank_top
+    dtype: float32
+    norm: null
+    default: 0
+  - name: i_add_product_secondcate_15_rank_top
+    dtype: float32
+    norm: null
+    default: 0
+  - name: i_order_secondcate_30_rank_top
+    dtype: float32
+    norm: null
+    default: 0
+  - name: i_order_secondcate_15_rank_top
+    dtype: float32
+    norm: null
+    default: 0
+  - name: search_first_7_cnt
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: search_first_7_whether
+    dtype: float32
+    norm: null
+    default: 0
+  - name: search_first_15_cnt
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: search_first_15_whether
+    dtype: float32
+    norm: null
+    default: 0
+  - name: search_first_30_cnt
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: search_first_30_whether
+    dtype: float32
+    norm: null
+    default: 0
+  - name: search_second_7_cnt
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: search_second_7_whether
+    dtype: float32
+    norm: null
+    default: 0
+  - name: search_second_15_cnt
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: search_second_15_whether
+    dtype: float32
+    norm: null
+    default: 0
+  - name: search_second_30_cnt
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: search_second_30_whether
+    dtype: float32
+    norm: null
+    default: 0
+  - name: i_tag_view_cnt_90
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_add_product_cnt_90
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_order_cnt_90
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_view_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_add_product_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_order_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_view_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_add_product_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_order_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_view_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_add_product_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_order_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_view_cnt_1
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_add_product_cnt_1
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_order_cnt_1
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_is_cate
+    dtype: float32
+    norm: null
+    default: 0
+  - name: price_norm
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: price_bias_common
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: price_bias_user
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: show_comment
+    dtype: string
+    norm: null
+    default: 0
+  - name: good_comment_rate
+    dtype: string
+    norm: null
+    default: 0
+  - name: sales
+    dtype: string
+    norm: log1p
+    default: 0
+  - name: is_sku_clicked
+    dtype: float32
+    norm: null
+    default: 0
+  - name: is_sku_added
+    dtype: float32
+    norm: null
+    default: 0
+  - name: is_sku_paid
+    dtype: float32
+    norm: null
+    default: 0
+  - name: is_lv2_clicked
+    dtype: float32
+    norm: null
+    default: 0
+  - name: is_lv2_added
+    dtype: float32
+    norm: null
+    default: 0
+  - name: is_lv2_paid
+    dtype: float32
+    norm: null
+    default: 0
+  - name: is_searched
+    dtype: float32
+    norm: null
+    default: 0
+  - name: search_cnt
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: second_expose_cnt_1
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: second_expose_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: second_expose_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: second_expose_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: add_1
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_2
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_3
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_4
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_5
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_6
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_7
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_8
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_9
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_10
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_11
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: add_12
+    dtype: float32
+    norm: zscore
+    default: 0
+  - name: i_tag_annual_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_annual_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_tag_annual_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_lv2_annual_cnt_30
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_lv2_annual_cnt_15
+    dtype: float32
+    norm: log1p
+    default: 0
+  - name: i_lv2_annual_cnt_7
+    dtype: float32
+    norm: log1p
+    default: 0
+labels:
+  - name: label
+    dtype: float32
+    norm: null
+    default: 0
